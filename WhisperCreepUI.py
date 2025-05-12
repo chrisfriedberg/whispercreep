@@ -447,10 +447,14 @@ class MonitorFolderDialog(QDialog):
             return
 
         # Register with state manager
-        if transcription_state.register_monitor(self.monitor_id) > 1:
+        active_monitors = transcription_state.register_monitor(self.monitor_id)
+        logger_app.info(f"Registered monitor {self.monitor_id}. Total active monitors: {active_monitors}")
+        
+        if active_monitors > 1:
             QMessageBox.warning(self, "Multiple Monitors",
                 "Another monitoring session is already active.\n\n"
                 "Please stop the other session first.")
+            transcription_state.unregister_monitor(self.monitor_id)
             return
             
         self.monitoring = True
@@ -477,6 +481,9 @@ class MonitorFolderDialog(QDialog):
             QSystemTrayIcon.Information,
             3000
         )
+        
+        # Log the start of monitoring with details
+        self.log_event(f"MONITORING STARTED | Folder: {self.settings['folder']} | Output: {self.settings['output']} | Interval: {self.settings['interval']}s")
 
     def stop_monitoring(self):
         if not self.monitoring:
@@ -490,7 +497,9 @@ class MonitorFolderDialog(QDialog):
             if self.monitor_thread.is_alive():
                 logger_app.warning("Monitor thread did not stop gracefully")
         
-        transcription_state.unregister_monitor(self.monitor_id)
+        # Unregister from state manager and log the count
+        remaining = transcription_state.unregister_monitor(self.monitor_id)
+        logger_app.info(f"Unregistered monitor {self.monitor_id}. Remaining active monitors: {remaining}")
         
         self.start_button.setEnabled(True)
         self.stop_button.setEnabled(False)
@@ -500,6 +509,9 @@ class MonitorFolderDialog(QDialog):
         self.tray_icon.hide()
         QMessageBox.information(self, "Stopped", "Folder monitoring has been stopped.")
         self.showNormal()
+        
+        # Log the stop event
+        self.log_event("MONITORING STOPPED")
 
     def monitor_folder(self):
         try:
@@ -510,10 +522,14 @@ class MonitorFolderDialog(QDialog):
             logger_app.info(f"Starting folder monitoring: {folder_to_monitor}")
             logger_app.info(f"Output location: {output_location}")
             logger_app.info(f"Time increment: {time_increment} seconds")
+            self.log_event(f"MONITORING ACTIVATED - Will check every {time_increment} seconds")
+            
+            # Clear processed files list on start
+            self.processed_files = set()
             
             while not self.stop_event.is_set():
                 try:
-                    # Check if a transcription is in progress
+                    # Check if a transcription is in progress from the main app
                     if transcription_state.is_transcribing:
                         logger_app.info("Manual transcription in progress, pausing monitoring...")
                         self.tray_icon.setToolTip("WhisperCreep Monitor - Monitoring On Hold")
@@ -535,19 +551,34 @@ class MonitorFolderDialog(QDialog):
                                 self.tray_icon.setToolTip("WhisperCreep Monitor - Active")
                                 self.log_event("Monitoring resumed after waiting interval")
                     
+                    # Verify folders still exist
                     if not os.path.exists(folder_to_monitor):
                         logger_app.error(f"Monitor folder does not exist: {folder_to_monitor}")
+                        self.log_event(f"ERROR: Monitor folder missing: {folder_to_monitor}")
                         self.stop_monitoring()
                         return
                         
                     if not os.path.exists(output_location):
                         logger_app.error(f"Output location does not exist: {output_location}")
+                        self.log_event(f"ERROR: Output folder missing: {output_location}")
                         self.stop_monitoring()
                         return
                         
-                    video_files = [f for f in os.listdir(folder_to_monitor) if f.lower().endswith((
-                        '.mp4', '.mov', '.avi', '.wmv', '.mkv'))]
+                    # Scan for video files
+                    try:
+                        logger_app.info(f"Scanning for video files in {folder_to_monitor}")
+                        video_files = [f for f in os.listdir(folder_to_monitor) if f.lower().endswith((
+                            '.mp4', '.mov', '.avi', '.wmv', '.mkv'))]
+                        logger_app.info(f"Found {len(video_files)} video files, {len(self.processed_files)} already processed")
+                    except Exception as e:
+                        logger_app.error(f"Error scanning folder {folder_to_monitor}: {e}")
+                        self.log_event(f"ERROR scanning folder: {str(e)}")
+                        time.sleep(time_increment)
+                        continue
+                    
                     unprocessed = [f for f in video_files if f not in self.processed_files]
+                    if unprocessed:
+                        logger_app.info(f"Found {len(unprocessed)} unprocessed videos: {', '.join(unprocessed)}")
                     
                     # Process only one file at a time
                     if unprocessed:
@@ -558,16 +589,21 @@ class MonitorFolderDialog(QDialog):
                             export_name = os.path.splitext(file_name)[0] + "_transcript.txt"
                             export_path = os.path.join(output_location, export_name)
                             
-                            self.log_event(f"START: {file_name}")
+                            self.log_event(f"START: {file_name}", src_path=file_path, dest_path=export_path)
                             self.tray_icon.setToolTip(f"WhisperCreep Monitor - Transcribing: {file_name}")
+                            logger_app.info(f"Starting transcription process for {file_path} -> {export_path}")
                             
                             # Try to transcribe with retries
-                            if self.transcribe_video(file_path, export_path):
-                                elapsed = time.time() - start_time
-                                self.log_event(f"DONE: {file_name} | Export: {export_name} | Time: {elapsed:.2f}s")
+                            transcription_result = self.transcribe_video(file_path, export_path)
+                            elapsed = time.time() - start_time
+                            
+                            if transcription_result:
+                                self.log_event(f"DONE: {file_name} | Export: {export_name} | Time: {elapsed:.2f}s", src_path=file_path, dest_path=export_path)
+                                logger_app.info(f"Transcription SUCCESSFUL in {elapsed:.2f}s")
                                 self.processed_files.add(file_name)
                             else:
-                                self.log_event(f"SKIPPED: {file_name} due to transcription failures")
+                                self.log_event(f"SKIPPED: {file_name} due to transcription failures", src_path=file_path)
+                                logger_app.warning(f"Transcription FAILED in {elapsed:.2f}s")
                             
                             # Wait the full interval before processing next file
                             logger_app.info(f"Waiting {time_increment} seconds before next file...")
@@ -576,21 +612,28 @@ class MonitorFolderDialog(QDialog):
                                 if self.stop_event.is_set():
                                     break
                                 time.sleep(1)
+                        else:
+                            logger_app.warning(f"File {file_path} not found or not a file")
+                            self.log_event(f"WARNING: File not found: {file_name}")
+                            self.processed_files.add(file_name)  # Mark as processed to avoid retrying
                     else:
                         # No new files, wait the interval before next scan
                         self.tray_icon.setToolTip(f"WhisperCreep Monitor - No new files, checking in {time_increment}s")
+                        logger_app.info(f"No unprocessed files found. Checking again in {time_increment}s")
                         for _ in range(time_increment):
                             if self.stop_event.is_set():
                                 break
                             time.sleep(1)
                         
                 except Exception as e:
-                    logger_app.error(f"Error in monitoring loop: {e}")
+                    logger_app.error(f"Error in monitoring loop: {e}", exc_info=True)
+                    self.log_event(f"ERROR in monitoring: {str(e)[:150]}")
                     self.tray_icon.setToolTip(f"WhisperCreep Monitor - Error: {str(e)[:50]}...")
                     time.sleep(time_increment)  # Wait before retrying
                     
         except Exception as e:
-            logger_app.error(f"Fatal error in monitor_folder: {e}")
+            logger_app.error(f"Fatal error in monitor_folder: {e}", exc_info=True)
+            self.log_event(f"FATAL ERROR: {str(e)[:150]}")
             self.stop_monitoring()
 
     def check_file_lock(self, file_path, timeout=5):
@@ -608,15 +651,19 @@ class MonitorFolderDialog(QDialog):
 
     def transcribe_video(self, file_path, export_path, max_retries=2):
         retry_count = 0
+        import whisper
+        import torch
+        import shutil
+        import tempfile
+        model_name = "base"  # You can make this configurable if desired
+        device = "cuda" if torch.cuda.is_available() else "cpu"
         while retry_count <= max_retries:
             try:
-                # Check if we're in a retry pause state
                 if MonitorFolderDialog._retry_pause_active:
                     logger_app.info("Another process is in retry pause state, waiting...")
                     time.sleep(2)
                     continue
 
-                # Check permissions before each attempt
                 if not self.check_folder_permissions(os.path.dirname(file_path)):
                     logger_app.error(f"Lost read permission for {file_path}")
                     self.log_event(f"Lost read permission: {os.path.basename(file_path)}")
@@ -627,7 +674,6 @@ class MonitorFolderDialog(QDialog):
                     self.log_event(f"Lost write permission: {os.path.basename(export_path)}")
                     return False
 
-                # Check if output file is locked
                 if os.path.exists(export_path) and self.check_file_lock(export_path):
                     logger_app.warning(f"Output file {export_path} is locked. Waiting for access...")
                     self.log_event(f"Waiting for output file access: {os.path.basename(export_path)}")
@@ -635,7 +681,6 @@ class MonitorFolderDialog(QDialog):
                     retry_count += 1
                     continue
 
-                # Check if input file is locked
                 if self.check_file_lock(file_path):
                     logger_app.warning(f"Input file {file_path} is locked. Waiting for access...")
                     self.log_event(f"Waiting for input file access: {os.path.basename(file_path)}")
@@ -643,45 +688,109 @@ class MonitorFolderDialog(QDialog):
                     retry_count += 1
                     continue
 
-                # Verify file consistency
                 if not self.verify_file_consistency(file_path):
                     logger_app.info(f"Waiting for file {file_path} to stabilize...")
                     time.sleep(2)
                     continue
 
-                # Set retry pause flag
                 MonitorFolderDialog._retry_pause_active = True
-
+                self.temp_output_path = export_path + '.partial'
+                temp_dir = None
+                temp_audio_path = None
                 try:
-                    # Create temporary output file
-                    self.temp_output_path = export_path + '.partial'
+                    # Set global transcription state
+                    transcription_state.set_transcribing(True)
+                    self.log_event(f"TRANSCRIPTION PROCESS STARTING for {os.path.basename(file_path)}")
+                    logger_app.info(f"[MONITOR] === BEGINNING ACTUAL TRANSCRIPTION PROCESS FOR {file_path} ===")
                     
-                    # Simulate transcription (replace with actual logic as needed)
-                    time.sleep(5)
-                    
-                    # Write to temporary file first
-                    with open(self.temp_output_path, 'w', encoding='utf-8') as f:
-                        f.write(f"Transcription of {file_path}\n")
-                    
-                    # Only rename to final name after successful write
+                    # 1. Extract audio from video
+                    temp_dir = tempfile.mkdtemp(prefix="wc_temp_")
+                    temp_audio_path = os.path.join(temp_dir, "temp_audio.wav")
+                    cmd = [
+                        "ffmpeg", "-i", file_path, "-y", "-vn", "-acodec", "pcm_s16le", "-ar", "16000", "-ac", "1", temp_audio_path
+                    ]
+                    logger_app.info(f"[MONITOR] FFMPEG cmd: {' '.join(cmd)}")
+                    res = subprocess.run(cmd, capture_output=True, text=True, errors='replace', creationflags=subprocess.CREATE_NO_WINDOW if os.name=='nt' else 0)
+                    if res.returncode != 0:
+                        logger_app.error(f"[MONITOR] FFMPEG audio extraction error: {res.stderr}")
+                        self.log_event(f"FFMPEG extract error: {res.stderr[:150]}...")
+                        return False
+                    if not os.path.exists(temp_audio_path) or os.path.getsize(temp_audio_path) == 0:
+                        logger_app.error(f"[MONITOR] FFMPEG OK but output missing/empty: '{temp_audio_path}'")
+                        self.log_event("FFMPEG produced no audio data.")
+                        return False
+                    logger_app.info("[MONITOR] Audio extraction OK.")
+
+                    # 2. Load Whisper and transcribe
+                    logger_app.info(f"[MONITOR] Loading Whisper model '{model_name}' on '{device}'.")
+                    model = whisper.load_model(model_name, device=device)
+                    logger_app.info("[MONITOR] Model loaded.")
+                    logger_app.info(f"[MONITOR] Starting transcription... (Audio: '{temp_audio_path}')")
+                    res_dict = model.transcribe(temp_audio_path, verbose=True)
+                    logger_app.info("[MONITOR] transcribe() call completed.")
+                    if res_dict is None:
+                        logger_app.error("[MONITOR] Transcription result is None!")
+                        self.log_event("Transcription returned no result.")
+                        return False
+
+                    # 3. Write transcript to temp file, then move to final output
+                    segments = res_dict.get("segments")
+                    full_txt = res_dict.get("text", "").strip()
+                    with open(self.temp_output_path, "w", encoding="utf-8") as f:
+                        f.write(f"Transcription of {file_path}\n\n")  # Add header so it's clear it's a real transcript
+                        if segments and any(seg['text'].strip() for seg in segments):
+                            for i, seg in enumerate(segments):
+                                f.write(f"[{format_timestamp_for_transcript(seg['start'])} --> {format_timestamp_for_transcript(seg['end'])}] {seg['text'].strip()}\n")
+                                if i % 100 == 0:
+                                    f.flush()
+                        elif full_txt:
+                            f.write(full_txt + ("\n" if full_txt else ""))
+                        else:
+                            error_msg = "[ERROR] Whisper returned no transcript data. Check logs for details."
+                            logger_app.error(f"[MONITOR] {error_msg}")
+                            f.write(error_msg + "\n")
+                    # Move to final output
                     if os.path.exists(export_path):
                         os.remove(export_path)
                     os.rename(self.temp_output_path, export_path)
                     self.temp_output_path = None
-                    
+                    logger_app.info(f"[MONITOR] Transcript written successfully to {export_path}")
+
+                    # 4. Move video file to output folder
+                    try:
+                        dest_video_path = os.path.join(os.path.dirname(export_path), os.path.basename(file_path))
+                        if os.path.abspath(file_path) != os.path.abspath(dest_video_path):
+                            shutil.move(file_path, dest_video_path)
+                            logger_app.info(f"[MONITOR] Video file moved to output folder: {dest_video_path}")
+                            self.log_event(f"VIDEO MOVED to output folder: {dest_video_path}")
+                    except Exception as e:
+                        logger_app.warning(f"[MONITOR] Failed to move video file: {e}")
+                        self.log_event(f"Failed to move video file: {str(e)[:150]}")
+
+                    # Clean up temp audio
+                    if temp_audio_path and os.path.exists(temp_audio_path):
+                        try:
+                            os.remove(temp_audio_path)
+                        except Exception as e:
+                            logger_app.warning(f"[MONITOR] Failed to clean up temp audio: {e}")
+                    if temp_dir and os.path.exists(temp_dir):
+                        try:
+                            shutil.rmtree(temp_dir)
+                        except Exception as e:
+                            logger_app.warning(f"[MONITOR] Failed to clean up temp dir: {e}")
+
                     return True
                 finally:
-                    # Clear retry pause flag
+                    # Always clear transcription state
+                    transcription_state.set_transcribing(False)
+                    logger_app.info(f"[MONITOR] === TRANSCRIPTION PROCESS COMPLETED FOR {file_path} ===")
                     MonitorFolderDialog._retry_pause_active = False
-                    
-                    # Clean up temp file if it exists
                     if self.temp_output_path and os.path.exists(self.temp_output_path):
                         try:
                             os.remove(self.temp_output_path)
                         except Exception as e:
                             logger_app.warning(f"Failed to clean up temp file {self.temp_output_path}: {e}")
                         self.temp_output_path = None
-
             except Exception as e:
                 retry_count += 1
                 if retry_count <= max_retries:
@@ -694,7 +803,10 @@ class MonitorFolderDialog(QDialog):
                     self.log_event(f"FAILED: {os.path.basename(file_path)} after {max_retries} retries")
                     return False
 
-    def log_event(self, message):
+    def log_event(self, message, src_path=None, dest_path=None):
+        # Enhanced logging: include src and dest if provided and if START or DONE
+        if (message.startswith("START:") or message.startswith("DONE:")) and src_path and dest_path:
+            message = f"{message} | Src: {src_path} | Dest: {dest_path}"
         with open(self.log_path, 'a', encoding='utf-8') as logf:
             logf.write(f"[{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {message}\n")
 

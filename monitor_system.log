@@ -1,26 +1,19 @@
-[2025-05-11 18:52:57] START: FileMetaMarkaDemonstration.mp4
-[2025-05-11 18:53:02] DONE: FileMetaMarkaDemonstration.mp4 | Export: FileMetaMarkaDemonstration_transcript.txt | Time: 5.00s
-[2025-05-11 18:55:30] START: FileMetaMarkaDemonstration.mp4
-[2025-05-11 18:55:35] DONE: FileMetaMarkaDemonstration.mp4 | Export: FileMetaMarkaDemonstration_transcript.txt | Time: 5.00s
-[2025-05-11 19:00:35] START: XYPlorer.mp4
-[2025-05-11 19:00:40] DONE: XYPlorer.mp4 | Export: XYPlorer_transcript.txt | Time: 5.00s
-[2025-05-11 19:02:42] START: FileMetaMarkaDemonstration.mp4
-[2025-05-11 19:02:47] DONE: FileMetaMarkaDemonstration.mp4 | Export: FileMetaMarkaDemonstration_transcript.txt | Time: 5.00s
-[2025-05-11 19:09:52] START: FileMetaMarkaDemonstration.mp4
-[2025-05-11 19:09:57] DONE: FileMetaMarkaDemonstration.mp4 | Export: FileMetaMarkaDemonstration_transcript.txt | Time: 5.00s
-[2025-05-11 19:13:10] START: FileMetaMarkaDemonstration.mp4
-[2025-05-11 19:13:15] DONE: FileMetaMarkaDemonstration.mp4 | Export: FileMetaMarkaDemonstration_transcript.txt | Time: 5.00s
-[2025-05-11 19:14:56] START: FileMetaMarkaDemonstration.mp4
-[2025-05-11 19:15:01] DONE: FileMetaMarkaDemonstration.mp4 | Export: FileMetaMarkaDemonstration_transcript.txt | Time: 5.00s
-[2025-05-11 19:24:57] START: FileMetaMarkaDemonstration.mp4
-[2025-05-11 19:25:02] DONE: FileMetaMarkaDemonstration.mp4 | Export: FileMetaMarkaDemonstration_transcript.txt | Time: 5.00s
-[2025-05-11 19:27:46] START: FileMetaMarkaDemonstration.mp4
-[2025-05-11 19:27:51] DONE: FileMetaMarkaDemonstration.mp4 | Export: FileMetaMarkaDemonstration_transcript.txt | Time: 5.00s
-[2025-05-11 19:30:39] START: FileMetaMarkaDemonstration.mp4
-[2025-05-11 19:30:44] DONE: FileMetaMarkaDemonstration.mp4 | Export: FileMetaMarkaDemonstration_transcript.txt | Time: 5.00s
-[2025-05-11 19:32:46] Manual transcription completed. Outcome: Failure/Error. Will resume after interval.
-[2025-05-11 19:32:50] Manual transcription completed. Outcome: Success. Will resume after interval.
-[2025-05-11 19:35:44] START: XYPlorer.mp4
-[2025-05-11 19:35:49] DONE: XYPlorer.mp4 | Export: XYPlorer_transcript.txt | Time: 5.00s
-[2025-05-11 19:46:05] START: FileMetaMarkaDemonstration.mp4
-[2025-05-11 19:46:12] DONE: FileMetaMarkaDemonstration.mp4 | Export: FileMetaMarkaDemonstration_transcript.txt | Time: 7.01s
+
+[2025-05-12 00:03:24] MONITORING STARTED | Folder: C:/Users/chris/Videos/Snagit | Output: C:/Users/chris/Videos/SnagIt_Transposed | Interval: 90s
+[2025-05-12 00:03:24] MONITORING ACTIVATED - Will check every 90 seconds
+[2025-05-12 00:03:24] START: 2025-05-11_22-24-49.mp4 | Src: C:/Users/chris/Videos/Snagit\2025-05-11_22-24-49.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\2025-05-11_22-24-49_transcript.txt
+[2025-05-12 00:03:26] TRANSCRIPTION PROCESS STARTING for 2025-05-11_22-24-49.mp4
+[2025-05-12 00:03:32] VIDEO MOVED to output folder: C:/Users/chris/Videos/SnagIt_Transposed\2025-05-11_22-24-49.mp4
+[2025-05-12 00:03:32] DONE: 2025-05-11_22-24-49.mp4 | Export: 2025-05-11_22-24-49_transcript.txt | Time: 7.92s | Src: C:/Users/chris/Videos/Snagit\2025-05-11_22-24-49.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\2025-05-11_22-24-49_transcript.txt
+[2025-05-12 00:05:02] START: AI_RevolutionTest.mp4 | Src: C:/Users/chris/Videos/Snagit\AI_RevolutionTest.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\AI_RevolutionTest_transcript.txt
+[2025-05-12 00:05:04] TRANSCRIPTION PROCESS STARTING for AI_RevolutionTest.mp4
+[2025-05-12 00:05:11] VIDEO MOVED to output folder: C:/Users/chris/Videos/SnagIt_Transposed\AI_RevolutionTest.mp4
+[2025-05-12 00:05:11] DONE: AI_RevolutionTest.mp4 | Export: AI_RevolutionTest_transcript.txt | Time: 8.85s | Src: C:/Users/chris/Videos/Snagit\AI_RevolutionTest.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\AI_RevolutionTest_transcript.txt
+[2025-05-12 00:06:41] START: FileMetaMarkaDemonstration.mp4 | Src: C:/Users/chris/Videos/Snagit\FileMetaMarkaDemonstration.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\FileMetaMarkaDemonstration_transcript.txt
+[2025-05-12 00:06:43] TRANSCRIPTION PROCESS STARTING for FileMetaMarkaDemonstration.mp4
+[2025-05-12 00:06:45] VIDEO MOVED to output folder: C:/Users/chris/Videos/SnagIt_Transposed\FileMetaMarkaDemonstration.mp4
+[2025-05-12 00:06:45] DONE: FileMetaMarkaDemonstration.mp4 | Export: FileMetaMarkaDemonstration_transcript.txt | Time: 4.17s | Src: C:/Users/chris/Videos/Snagit\FileMetaMarkaDemonstration.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\FileMetaMarkaDemonstration_transcript.txt
+[2025-05-12 00:08:15] START: XYPlorer.mp4 | Src: C:/Users/chris/Videos/Snagit\XYPlorer.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\XYPlorer_transcript.txt
+[2025-05-12 00:08:18] TRANSCRIPTION PROCESS STARTING for XYPlorer.mp4
+[2025-05-12 00:08:19] VIDEO MOVED to output folder: C:/Users/chris/Videos/SnagIt_Transposed\XYPlorer.mp4
+[2025-05-12 00:08:19] DONE: XYPlorer.mp4 | Export: XYPlorer_transcript.txt | Time: 3.34s | Src: C:/Users/chris/Videos/Snagit\XYPlorer.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\XYPlorer_transcript.txt
