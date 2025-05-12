@@ -1,0 +1,331 @@
+[2025-05-11 00:52:07] [EXTRACT VIDEO TRANSCRIPT] C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4 => C:/Users/chris/Desktop/scripts/TheMudRoom/WhisperCreep/Output/output_20250511
+[2025-05-11 00:57:49] [EXTRACT VIDEO TRANSCRIPT] C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4 => C:/Users/chris/Desktop/scripts/TheMudRoom/WhisperCreep/Output/output_20250511.txt
+[2025-05-11 01:10:23] [EXTRACT VIDEO TRANSCRIPT] C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4 => C:/Users/chris/Desktop/scripts/TheMudRoom/WhisperCreep/Output/output_20250511.txt
+[2025-05-11 01:35:42] [EXTRACT VIDEO TRANSCRIPT] C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4 => C:/Users/chris/Desktop/scripts/TheMudRoom/WhisperCreep/Output/transcript_video_20250511.txt
+[2025-05-11 01:44:03] Transcript saved to: C:/Users/chris/Desktop/scripts/TheMudRoom/WhisperCreep/Output/transcript_video_20250511.txt
+[2025-05-11 02:17:33] [INFO] Process started...
+[2025-05-11 02:17:33] [INFO] Preparing operation window...
+[2025-05-11 02:17:33] [INFO] Window loaded. Dispatching process...
+[2025-05-11 02:17:33] [INFO] Extracting audio from video...
+[2025-05-11 02:17:34] [INFO] Audio extraction completed
+[2025-05-11 02:17:34] Loading Whisper model...
+[2025-05-11 02:17:38] Model loaded successfully
+[2025-05-11 02:17:38] Starting transcription...
+[2025-05-11 02:26:16] [INFO] Process started...
+[2025-05-11 02:26:16] [INFO] Preparing operation window...
+[2025-05-11 02:26:16] [INFO] Window loaded. Dispatching process...
+[2025-05-11 02:26:16] [INFO] Extracting audio from video...
+[2025-05-11 02:26:17] [INFO] Audio extraction completed
+[2025-05-11 02:26:17] Loading Whisper model...
+[2025-05-11 02:26:26] Model loaded successfully
+[2025-05-11 02:26:26] Starting transcription...
+[2025-05-11 02:33:22] [INFO] Process started...
+[2025-05-11 02:33:22] [INFO] Preparing operation window...
+[2025-05-11 02:33:22] [INFO] Window loaded. Dispatching process...
+[2025-05-11 02:33:22] [INFO] Starting process...
+[2025-05-11 02:33:22] [INFO] Extracting audio from video...
+[2025-05-11 02:33:23] [INFO] Audio extraction completed
+[2025-05-11 02:33:23] [INFO] Loading Whisper model...
+[2025-05-11 02:33:32] [INFO] Model loaded successfully
+[2025-05-11 02:33:32] [INFO] Starting transcription...
+[2025-05-11 02:38:04] [INFO] Process started...
+[2025-05-11 02:38:04] [INFO] Preparing operation window...
+[2025-05-11 02:38:04] [INFO] Window loaded. Dispatching process...
+[2025-05-11 02:38:05] [INFO] Starting process...
+[2025-05-11 02:38:05] [INFO] Extracting audio from video...
+[2025-05-11 02:38:05] [INFO] Audio extraction completed
+[2025-05-11 02:38:05] [INFO] Loading Whisper model...
+[2025-05-11 02:38:10] [INFO] Model loaded successfully
+[2025-05-11 02:38:10] [INFO] Starting transcription...
+[2025-05-11 02:43:12] [INFO] Process started...
+[2025-05-11 02:43:12] [INFO] Preparing operation window...
+[2025-05-11 02:43:12] [INFO] Window loaded. Dispatching process...
+[2025-05-11 02:43:13] [INFO] Starting process...
+[2025-05-11 02:43:13] [INFO] Extracting audio from video...
+[2025-05-11 02:43:13] [INFO] Audio extraction completed
+[2025-05-11 02:43:13] [INFO] Loading Whisper model...
+[2025-05-11 02:43:22] [INFO] Model loaded successfully
+[2025-05-11 02:43:22] [INFO] Starting transcription...
+[2025-05-11 02:53:17] [INFO] Process started...
+[2025-05-11 02:53:17] [INFO] Preparing operation window...
+[2025-05-11 02:53:17] [INFO] Window loaded. Dispatching process...
+[2025-05-11 02:53:17] [INFO] Starting process...
+[2025-05-11 02:53:17] [INFO] Extracting audio from video...
+[2025-05-11 02:53:18] [INFO] Audio extraction completed
+[2025-05-11 02:53:18] [INFO] Loading Whisper model...
+[2025-05-11 02:53:22] [INFO] Model loaded successfully
+[2025-05-11 02:53:22] [INFO] Starting transcription...
+[2025-05-11 02:57:56] [INFO] Process started...
+[2025-05-11 02:57:56] [INFO] Preparing operation window...
+[2025-05-11 02:57:56] [INFO] Window loaded. Dispatching process...
+[2025-05-11 02:57:56] [INFO] Starting process...
+[2025-05-11 02:57:56] [INFO] Extracting audio from video...
+[2025-05-11 02:57:57] [INFO] Audio extraction completed
+[2025-05-11 02:57:57] [INFO] Loading Whisper model...
+[2025-05-11 02:58:02] [INFO] Model loaded successfully
+[2025-05-11 02:58:02] [INFO] Starting transcription...
+[2025-05-11 02:59:43] [INFO] Stopping transcription process...
+[2025-05-11 02:59:44] [INFO] Process terminated. Any transcribed data so far has been saved.
+[2025-05-11 03:01:18] [INFO] Process started...
+[2025-05-11 03:01:18] [INFO] Preparing operation window...
+[2025-05-11 03:01:18] [INFO] Window loaded. Dispatching process...
+[2025-05-11 03:01:18] [INFO] Starting process...
+[2025-05-11 03:01:18] [INFO] Extracting audio from video...
+[2025-05-11 03:01:19] [INFO] Audio extraction completed
+[2025-05-11 03:01:19] [INFO] Loading Whisper model...
+[2025-05-11 03:01:24] [INFO] Model loaded successfully
+[2025-05-11 03:01:24] [INFO] Starting transcription...
+[2025-05-11 03:02:44] [INFO] Stopping transcription process...
+[2025-05-11 03:02:46] [INFO] Process terminated. Any transcribed data so far has been saved.
+[2025-05-11 03:03:41] [INFO] Process started...
+[2025-05-11 03:03:41] [INFO] Preparing operation window...
+[2025-05-11 03:03:41] [INFO] Window loaded. Dispatching process...
+[2025-05-11 03:03:41] [INFO] Starting process...
+[2025-05-11 03:03:41] [INFO] Extracting audio from video...
+[2025-05-11 03:03:42] [INFO] Audio extraction completed
+[2025-05-11 03:03:42] [INFO] Loading Whisper model...
+[2025-05-11 03:03:46] [INFO] Model loaded successfully
+[2025-05-11 03:03:46] [INFO] Starting transcription...
+[2025-05-11 03:09:14] [INFO] Stopping transcription process...
+[2025-05-11 03:09:15] [INFO] Process terminated. Any transcribed data so far has been saved.
+[2025-05-11 03:09:15] [INFO] Stopping transcription process...
+[2025-05-11 03:09:16] [INFO] Process terminated. Any transcribed data so far has been saved.
+[2025-05-11 03:09:46] [INFO] Process started...
+[2025-05-11 03:09:46] [INFO] Preparing operation window...
+[2025-05-11 03:09:46] [INFO] Window loaded. Dispatching process...
+[2025-05-11 03:09:46] [INFO] Starting process...
+[2025-05-11 03:09:46] [PROGRESS] Transcription progress: 0%
+[2025-05-11 03:09:46] [INFO] Extracting audio from video...
+[2025-05-11 03:09:47] [INFO] Audio extraction completed
+[2025-05-11 03:09:47] [INFO] Loading Whisper model...
+[2025-05-11 03:09:51] [INFO] Model loaded successfully
+[2025-05-11 03:09:51] [INFO] Starting transcription...
+[2025-05-11 03:11:53] [DEBUG] Worker reports progress: 35%
+[2025-05-11 03:11:53] [DEBUG] UI stored progress: 35%
+[2025-05-11 03:12:23] [DEBUG] Worker reports progress: 35%
+[2025-05-11 03:12:23] [DEBUG] UI stored progress: 35%
+[2025-05-11 03:13:11] [DEBUG] Worker reports progress: 35%
+[2025-05-11 03:13:11] [DEBUG] UI stored progress: 35%
+[2025-05-11 03:13:39] [DEBUG] Worker reports progress: 35%
+[2025-05-11 03:13:39] [DEBUG] UI stored progress: 35%
+[2025-05-11 03:16:53] over. Okay, so we have this Miro board that we've talked about before. I'll go over it fairly quickly
+[2025-05-11 03:16:53] again, but we can get any data from for a provider practice through any one of four different
+[2025-05-11 03:16:53] what we call data delivery methods. There is a vendor hosted SFTP where we can just connect to
+[2025-05-11 03:16:53] that SFTP and pull files from a specific folder. That's this scenario too. There is also a scenario
+[2025-05-11 03:16:53] that's fairly rare now where the vendor hosts an SFTP server, but they put files into semi-random
+[2025-05-11 03:16:53] subfolders. It just so happens that mirth has some difficulty. Mirth doesn't really have a good way
+[2025-05-11 03:16:53] of looping through multiple subfolders on an external SFTP server. In order to collect claims,
+[2025-05-11 03:16:53] we have a couple of vendors that send data that way. The DevOps team just set up a run deck job
+[2025-05-11 03:16:53] to log into those SFTP accounts and loop through the subfolders and pull the files over for us.
+[2025-05-11 03:16:53] For those, these bypass mirth completely and go directly into a folder in Aladay.Lake called
+[2025-05-11 03:16:53] run deck SFTP. For everything else, either mirth is logging into a vendor's SFTP and pulling files,
+[2025-05-11 03:16:53] or the vendor is sending files to our SFTP down here. That can either be the traditional
+[2025-05-11 03:16:53] [PROGRESS] Transcription progress: 40%
+[2025-05-11 03:16:53] [PROGRESS] Transcription progress: 40%
+[2025-05-11 03:16:53] SFTP server which is on mirth or SFTP or it is also possible for them to send via a TCP port.
+[2025-05-11 03:16:53] [PROGRESS] Transcription progress: 40%
+[2025-05-11 03:16:53] [PROGRESS] Transcription progress: 40%
+[2025-05-11 03:16:53] Yes Doug? What is the advanced MD? Is that a certain vendor that we...
+[2025-05-11 03:16:53] It's advanced MD. Advanced MD is the vendor that insists on providing us claims in multiple
+[2025-05-11 03:16:53] subfolders. They don't organize their SFTP folders the way that mirth can handle it.
+[2025-05-11 03:16:53] Is that like an EMR or something? Is it a company? Yeah, I think you're right. I think it's a bar.
+[2025-05-11 03:16:53] I used to work with them a long time ago. What is that? I'm sorry, I couldn't understand.
+[2025-05-11 03:16:53] Value added resellers or bar? VAR. VAR. Okay, thank you. Yeah, we have a lot of value added
+[2025-05-11 03:16:53] resellers who are not the vendor of the EHR. They're not the vendor of the practice management
+[2025-05-11 03:16:53] system. They're another entity that provides interfaces on behalf of the practice from their
+[2025-05-11 03:16:53] systems. They're like data broker basically? They're more like an interface consultant.
+[2025-05-11 03:16:53] Okay. So they maintain interfaces. So instead of all scripts sending us data directly from their
+[2025-05-11 03:16:53] system, a third party connects to all scripts, pulls the data, and sends it to us. And that's
+[2025-05-11 03:16:53] what they are. Okay, thank you. So anyway, most of the time when you're dealing with claims,
+[2025-05-11 03:16:53] A37s, and this is only A37s, we're not talking at this point about HealthChump. So HealthChump goes
+[2025-05-11 03:16:53] to a different process, although the last couple steps of ingestion are the same. But when you're
+[2025-05-11 03:16:53] dealing with A37s, either like up here, the vendor is providing A37s via their own SFTP server,
+[2025-05-11 03:16:53] or down here they're sending to our SFTP server, or it is possible for them to send over at TCP port.
+[2025-05-11 03:16:53] When the A37s are sent to our old SFTP server, they don't go through MRF either. Okay, they go
+[2025-05-11 03:16:53] through a cron job that DevOps has set up, and they get copied to the associated SFTP server,
+[2025-05-11 03:16:53] the associated SFTP folder in Aladde.leg in S3. Okay. The new SFTP server, SFTP Go, it actually
+[2025-05-11 03:16:53] writes all of its files to a different S3 bucket called Aladde.sftp.prod. Mirth picks up files from
+[2025-05-11 03:16:53] there and moves them to an SFTP folder in Aladde.leg. Okay. Now the goal of all of this is just to get
+[2025-05-11 03:16:53] [PROGRESS] Transcription progress: 50%
+[2025-05-11 03:16:53] [PROGRESS] Transcription progress: 50%
+[2025-05-11 03:16:53] the A37 into Aladde.leg. Because once the A37 files in Aladde.leg, a process called ET pipeline
+[2025-05-11 03:16:53] [PROGRESS] Transcription progress: 50%
+[2025-05-11 03:16:53] [PROGRESS] Transcription progress: 50%
+[2025-05-11 03:16:53] picks the files up because S3 sends it an SQS message saying, hi, I've got a new file. ET pipeline
+[2025-05-11 03:16:53] looks at that and all ET pipeline does, sorry, I'm trying to move over here. All ET pipeline does
+[2025-05-11 03:16:53] is write a record to the source data table in db.claims and attribution prod. DB claims and
+[2025-05-11 09:48:25] [INFO] Process started...
+[2025-05-11 09:48:25] [INFO] Preparing operation window...
+[2025-05-11 09:48:25] [INFO] Window loaded. Dispatching process...
+[2025-05-11 09:48:25] [INFO] Starting process...
+[2025-05-11 09:48:25] [PROGRESS] Transcription progress: 0%
+[2025-05-11 09:48:25] [INFO] Extracting audio from video...
+[2025-05-11 09:48:26] [INFO] Audio extraction completed
+[2025-05-11 09:48:26] [INFO] Loading Whisper model...
+[2025-05-11 09:48:31] [INFO] Model loaded successfully
+[2025-05-11 09:48:31] [INFO] Starting transcription...
+[2025-05-11 10:46:23] [INFO] [WhisperCreepApp] --- Application Starting Up. Version: 1.2.0_FullLogging_FormattedTranscript ---
+[2025-05-11 10:46:23] [INFO] [WhisperCreepApp] WhisperCreepInterface initializing. Version: 1.2.0_FullLogging_FormattedTranscript. App Start Time: 2025-05-11 10:46:23
+[2025-05-11 10:46:23] [DEBUG] [WhisperCreepApp] Menu bar created.
+[2025-05-11 10:46:23] [DEBUG] [WhisperCreepApp] Central widget and main layout created.
+[2025-05-11 10:46:23] [INFO] [WhisperCreepApp] WhisperCreepInterface UI initialized.
+[2025-05-11 10:46:23] [INFO] [WhisperCreepApp] Application window shown. Entering main event loop.
+[2025-05-11 10:55:26] [INFO] [WhisperCreepApp] --- Application Starting Up. Version: 1.3.0_FixedOutput_RevertedGUI, PID: 31404 ---
+[2025-05-11 10:55:26] [INFO] [WhisperCreepApp] UI initializing. Version: 1.3.0_FixedOutput_RevertedGUI. Start: 2025-05-11 10:55:26
+[2025-05-11 10:55:26] [INFO] [WhisperCreepApp] UI initialized.
+[2025-05-11 10:55:26] [INFO] [WhisperCreepApp] App window shown. Entering main event loop.
+[2025-05-11 10:56:54] [INFO] [WhisperCreepApp] Close event. App shutting down.
+[2025-05-11 10:56:54] [INFO] [WhisperCreepApp] --- Application Closed. Total uptime: 87.21 seconds. ---
+[2025-05-11 10:58:27] [INFO] [WhisperCreepApp.GUI] --- Application Starting Up. Version: 1.3.1_OriginalGUI_CoreUpdates, PID: 47492 ---
+[2025-05-11 10:58:27] [INFO] [WhisperCreepApp.GUI] UI initializing. Version: 1.3.1_OriginalGUI_CoreUpdates. App Start: 2025-05-11 10:58:27
+[2025-05-11 10:58:27] [INFO] [WhisperCreepApp.GUI] UI widgets created and layout applied.
+[2025-05-11 10:58:27] [INFO] [WhisperCreepApp.GUI] Application window shown. Entering main event loop.
+[2025-05-11 10:59:46] [DEBUG] [WhisperCreepApp.GUI] 'enable_file_buttons' called by radio button click.
+[2025-05-11 10:59:46] [DEBUG] [WhisperCreepApp.GUI] Run button state updated. Enabled: False
+[2025-05-11 11:00:06] [DEBUG] [WhisperCreepApp.GUI] Browse source file initiated.
+[2025-05-11 11:00:13] [INFO] [WhisperCreepApp.GUI] Source file selected: C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4
+[2025-05-11 11:00:13] [DEBUG] [WhisperCreepApp.GUI] Run button state updated. Enabled: True
+[2025-05-11 11:00:24] [INFO] [WhisperCreepApp.GUI] --- User initiated 'Run' at 2025-05-11 11:00:24 ---
+[2025-05-11 11:00:24] [INFO] [WhisperCreepApp.GUI] Processing details for current run:
+[2025-05-11 11:00:24] [INFO] [WhisperCreepApp.GUI]   Mode: rip_audio
+[2025-05-11 11:00:24] [INFO] [WhisperCreepApp.GUI]   Source File: C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4
+[2025-05-11 11:00:24] [INFO] [WhisperCreepApp.GUI]   Auto Destination File: C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_rip_20250511_110024.mp3
+[2025-05-11 11:00:24] [INFO] [WhisperCreepApp.GUI]   Whisper Model: medium
+[2025-05-11 11:00:24] [INFO] [WhisperCreepApp.Worker] Worker initialized. Mode: rip_audio, Source: 'C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4', DestFile: 'C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_rip_20250511_110024.mp3', Model: medium, Device: cpu
+[2025-05-11 11:00:24] [INFO] [WhisperCreepApp.GUI] Whisper worker thread started.
+[2025-05-11 11:00:24] [INFO] [WhisperCreepApp.Worker] Worker run method started.
+[2025-05-11 11:00:24] [DEBUG] [WhisperCreepApp.GUI] Attempted to bring console to front.
+[2025-05-11 11:00:24] [INFO] [WhisperCreepApp.Worker] Mode: 'rip_audio'. Ripping audio to 'C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_rip_20250511_110024.mp3'.
+[2025-05-11 11:00:24] [INFO] [WhisperCreepApp.Worker] Executing FFMPEG for audio rip: ffmpeg -i C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4 -vn -acodec mp3 C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_rip_20250511_110024.mp3
+[2025-05-11 11:00:32] [INFO] [WhisperCreepApp.Worker] Audio rip successful and file verified: 'C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_rip_20250511_110024.mp3'.
+[2025-05-11 11:00:32] [INFO] [WhisperCreepApp.Worker] Worker 'finally' block. Total worker time: 8.43s.
+[2025-05-11 11:00:32] [INFO] [WhisperCreepApp.Worker] Worker cleanup called. Temp dir: 'None'
+[2025-05-11 11:00:32] [DEBUG] [WhisperCreepApp.Worker] No temp dir to clean or path was None/invalid.
+[2025-05-11 11:00:32] [INFO] [WhisperCreepApp.Worker] Worker cleanup finished.
+[2025-05-11 11:00:32] [INFO] [WhisperCreepApp.Worker] Emitting FINISHED signal with path: 'C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_rip_20250511_110024.mp3'
+[2025-05-11 11:00:32] [INFO] [WhisperCreepApp.Worker] Worker run method fully completed.
+[2025-05-11 11:00:32] [INFO] [WhisperCreepApp.GUI] Operation successful. Output file at: C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_rip_20250511_110024.mp3
+[2025-05-11 11:00:35] [DEBUG] [WhisperCreepApp.GUI] Run button state updated. Enabled: True
+[2025-05-11 11:00:35] [INFO] [WhisperCreepApp.GUI] --- GUI handling for 'Run' finished at 2025-05-11 11:00:35. Reported Success: True, Message: Output: C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_rip_20250511_110024.mp3 ---
+[2025-05-11 11:01:28] [INFO] [WhisperCreepApp.GUI] --- Application Starting Up. Version: 1.3.2_OriginalGUI_TargetedUpdates, PID: 48732 ---
+[2025-05-11 11:01:28] [INFO] [WhisperCreepApp.GUI] UI initializing. Version: 1.3.2_OriginalGUI_TargetedUpdates. App Start: 2025-05-11 11:01:28
+[2025-05-11 11:01:28] [INFO] [WhisperCreepApp.GUI] UI widgets created and layout based on original structure.
+[2025-05-11 11:01:28] [INFO] [WhisperCreepApp.GUI] Application window shown. Entering main event loop.
+[2025-05-11 11:02:02] [DEBUG] [WhisperCreepApp.GUI] 'enable_file_buttons' (operation selected).
+[2025-05-11 11:02:02] [DEBUG] [WhisperCreepApp.GUI] Run button enabled state: False
+[2025-05-11 11:02:03] [DEBUG] [WhisperCreepApp.GUI] Browse source file initiated.
+[2025-05-11 11:02:07] [INFO] [WhisperCreepApp.GUI] Source file selected: C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4
+[2025-05-11 11:02:07] [DEBUG] [WhisperCreepApp.GUI] Run button enabled state: True
+[2025-05-11 11:03:08] [INFO] [WhisperCreepApp.GUI] --- User clicked 'Run' at 2025-05-11 11:03:08 ---
+[2025-05-11 11:03:08] [INFO] [WhisperCreepApp.GUI] Processing details for current run:
+[2025-05-11 11:03:08] [INFO] [WhisperCreepApp.GUI]   Mode: video_transcript
+[2025-05-11 11:03:08] [INFO] [WhisperCreepApp.GUI]   Source File: C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4
+[2025-05-11 11:03:08] [INFO] [WhisperCreepApp.GUI]   Auto Destination File: C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_transcript_20250511_110308.txt
+[2025-05-11 11:03:08] [INFO] [WhisperCreepApp.GUI]   Whisper Model: medium
+[2025-05-11 11:03:08] [INFO] [WhisperCreepApp.Worker] Worker initialized. Mode: video_transcript, Source: 'C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4', DestFile: 'C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_transcript_20250511_110308.txt', Model: medium, Device: cpu
+[2025-05-11 11:03:08] [INFO] [WhisperCreepApp.GUI] Whisper worker thread started.
+[2025-05-11 11:03:08] [INFO] [WhisperCreepApp.Worker] Worker run method started.
+[2025-05-11 11:03:08] [DEBUG] [WhisperCreepApp.GUI] Attempted to bring console to front.
+[2025-05-11 11:03:08] [INFO] [WhisperCreepApp.Worker] 
+==================================================
+WhisperCreep Transcription Process (Worker Log)
+==================================================
+
+[2025-05-11 11:03:08] [INFO] [WhisperCreepApp.Worker] Starting worker process execution...
+[2025-05-11 11:03:08] [INFO] [WhisperCreepApp.Worker] Extracting audio from video...
+[2025-05-11 11:03:08] [INFO] [WhisperCreepApp.Worker] FFMPEG cmd: ffmpeg -i C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4 -vn -acodec pcm_s16le -ar 16000 -ac 1 C:\Users\chris\AppData\Local\Temp\wc_temp_yo1ymm2q\temp_audio.wav
+[2025-05-11 11:03:09] [INFO] [WhisperCreepApp.Worker] Audio extraction completed.
+[2025-05-11 11:03:09] [INFO] [WhisperCreepApp.Worker] Loading Whisper model...
+[2025-05-11 11:03:14] [INFO] [WhisperCreepApp.Worker] Model loaded successfully.
+[2025-05-11 11:03:14] [INFO] [WhisperCreepApp.Worker] Starting transcription...
+[2025-05-11 11:13:57] [INFO] [WhisperCreepApp.GUI] --- Application Starting Up. Version: 1.4.0_Spinner_KillButton_Logging++, PID: 33760 ---
+[2025-05-11 11:13:57] [INFO] [WhisperCreepApp.GUI] UI initializing. Version: 1.4.0_Spinner_KillButton_Logging++. App Start: 2025-05-11 11:13:57
+[2025-05-11 11:13:57] [INFO] [WhisperCreepApp.GUI] UI widgets created and layout based on original structure.
+[2025-05-11 11:13:57] [INFO] [WhisperCreepApp.GUI] Application window shown. Entering main event loop.
+[2025-05-11 11:14:02] [DEBUG] [WhisperCreepApp.GUI] 'enable_file_buttons' (operation selected).
+[2025-05-11 11:14:02] [DEBUG] [WhisperCreepApp.GUI] Run button enabled state: False
+[2025-05-11 11:14:04] [DEBUG] [WhisperCreepApp.GUI] Browse source file initiated.
+[2025-05-11 11:14:12] [INFO] [WhisperCreepApp.GUI] Source file selected: C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4
+[2025-05-11 11:14:12] [DEBUG] [WhisperCreepApp.GUI] Run button enabled state: True
+[2025-05-11 11:14:18] [INFO] [WhisperCreepApp.GUI] --- User clicked 'Run' at 2025-05-11 11:14:18 ---
+[2025-05-11 11:14:18] [INFO] [WhisperCreepApp.GUI] Processing details for current run:
+[2025-05-11 11:14:18] [INFO] [WhisperCreepApp.GUI]   Mode: video_transcript
+[2025-05-11 11:14:18] [INFO] [WhisperCreepApp.GUI]   Source File: C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4
+[2025-05-11 11:14:18] [INFO] [WhisperCreepApp.GUI]   Auto Destination File: C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_transcript_20250511_111418.txt
+[2025-05-11 11:14:18] [INFO] [WhisperCreepApp.GUI]   Whisper Model: tiny
+[2025-05-11 11:14:18] [DEBUG] [WhisperCreepApp.GUI] ProcessingIndicatorDialog initialized.
+[2025-05-11 11:14:18] [DEBUG] [WhisperCreepApp.GUI] ProcessingIndicatorDialog animation started.
+[2025-05-11 11:14:18] [INFO] [WhisperCreepApp.Worker] Worker initialized. Mode: video_transcript, Source: 'C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4', DestFile: 'C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_transcript_20250511_111418.txt', Model: tiny, Device: cpu
+[2025-05-11 11:14:18] [INFO] [WhisperCreepApp.GUI] Whisper worker thread started.
+[2025-05-11 11:14:18] [INFO] [WhisperCreepApp.Worker] Worker run method started.
+[2025-05-11 11:14:18] [DEBUG] [WhisperCreepApp.GUI] Attempted to bring console to front.
+[2025-05-11 11:14:18] [DEBUG] [WhisperCreepApp.Worker] 
+==================================================
+WhisperCreep Worker Log Segment
+==================================================
+
+[2025-05-11 11:14:18] [INFO] [WhisperCreepApp.Worker] Starting worker process execution...
+[2025-05-11 11:14:18] [INFO] [WhisperCreepApp.Worker] Extracting audio from video...
+[2025-05-11 11:14:18] [INFO] [WhisperCreepApp.Worker] FFMPEG cmd: ffmpeg -i C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4 -y -vn -acodec pcm_s16le -ar 16000 -ac 1 C:\Users\chris\AppData\Local\Temp\wc_temp_8buda8l8\temp_audio.wav
+[2025-05-11 11:14:19] [INFO] [WhisperCreepApp.Worker] Audio extraction completed.
+[2025-05-11 11:14:19] [INFO] [WhisperCreepApp.Worker] Loading Whisper model 'tiny' on device 'cpu'.
+[2025-05-11 11:14:22] [INFO] [WhisperCreepApp.Worker] Model loaded successfully.
+[2025-05-11 11:14:22] [INFO] [WhisperCreepApp.Worker] Starting transcription... (Audio: 'C:\Users\chris\AppData\Local\Temp\wc_temp_8buda8l8\temp_audio.wav')
+[2025-05-11 11:15:05] [INFO] [WhisperCreepApp.Worker] Transcription call completed.
+[2025-05-11 11:15:05] [INFO] [WhisperCreepApp.Worker] Writing 168 segments to C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_transcript_20250511_111418.txt...
+[2025-05-11 11:15:05] [INFO] [WhisperCreepApp.Worker] Transcript saved to: C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_transcript_20250511_111418.txt
+[2025-05-11 11:15:05] [INFO] [WhisperCreepApp.Worker] Worker 'finally' block. Total worker time: 46.45s. Operation successful flag: True. _is_running: True
+[2025-05-11 11:15:05] [INFO] [WhisperCreepApp.Worker] Worker cleanup. Temp dir: 'C:\Users\chris\AppData\Local\Temp\wc_temp_8buda8l8'
+[2025-05-11 11:15:05] [INFO] [WhisperCreepApp.Worker] Cleaned temp dir: 'C:\Users\chris\AppData\Local\Temp\wc_temp_8buda8l8'
+[2025-05-11 11:15:05] [INFO] [WhisperCreepApp.Worker] Worker cleanup finished.
+[2025-05-11 11:15:05] [INFO] [WhisperCreepApp.Worker] Emitting finished_with_path signal: 'C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_transcript_20250511_111418.txt'
+[2025-05-11 11:15:05] [INFO] [WhisperCreepApp.Worker] Worker run method fully completed.
+[2025-05-11 11:15:05] [INFO] [WhisperCreepApp.GUI] Worker finished_with_path signal received. Path/Msg: C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_transcript_20250511_111418.txt
+[2025-05-11 11:15:05] [WARNING] [WhisperCreepApp.GUI] Thread finished, but GUI was still in processing state. Finalizing.
+[2025-05-11 11:15:05] [INFO] [WhisperCreepApp.GUI] Finalizing GUI. Success: False, Path/Msg: Process ended unexpectedly or was killed.
+[2025-05-11 11:16:37] [INFO] [WhisperCreepApp.GUI] SUCCESS. Output file confirmed at: C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_transcript_20250511_111418.txt
+[2025-05-11 11:16:37] [INFO] [WhisperCreepApp.GUI] Finalizing GUI. Success: True, Path/Msg: C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_transcript_20250511_111418.txt
+[2025-05-11 11:19:27] [INFO] [WhisperCreepApp.GUI] Close event triggered by user or system at 2025-05-11 11:19:27. Application shutting down.
+[2025-05-11 11:19:27] [DEBUG] [WhisperCreepApp.GUI] ProcessingIndicatorDialog closeEvent called (likely by system/X button). Forcing stop.
+[2025-05-11 11:25:10] [INFO] [WhisperCreepApp.GUI] --- Application Starting Up. Version: 1.4.1_DialogKill_SpinnerFix, PID: 50140 ---
+[2025-05-11 11:25:10] [INFO] [WhisperCreepApp.GUI] UI initializing. Version: 1.4.1_DialogKill_SpinnerFix. Start: 2025-05-11 11:25:10
+[2025-05-11 11:25:10] [INFO] [WhisperCreepApp.GUI] UI widgets created using original structure.
+[2025-05-11 11:25:10] [INFO] [WhisperCreepApp.GUI] Application window shown. Entering main event loop.
+[2025-05-11 11:25:12] [DEBUG] [WhisperCreepApp.GUI] 'enable_file_buttons' (operation selected).
+[2025-05-11 11:25:13] [DEBUG] [WhisperCreepApp.GUI] Browse source file initiated.
+[2025-05-11 11:25:18] [INFO] [WhisperCreepApp.GUI] Source file selected: C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.GUI] --- User clicked 'Run' at 2025-05-11 11:25:23 ---
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.GUI] Processing details for current run:
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.GUI]   Mode: video_transcript, Model: tiny
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.GUI]   Source: C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.GUI]   Auto Destination: C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_transcript_20250511_112523.txt
+[2025-05-11 11:25:23] [DEBUG] [WhisperCreepApp.GUI] Updating GUI for processing state: True
+[2025-05-11 11:25:23] [DEBUG] [WhisperCreepApp.GUI] ProcessingIndicatorDialog initialized with Kill button.
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.GUI] ProcessingIndicatorDialog animation started, dialog shown.
+[2025-05-11 11:25:23] [DEBUG] [WhisperCreepApp.GUI] GUI update for processing state complete. Spinner visible: True
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.Worker] Worker init. Mode:video_transcript, Src:'C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4', Dest:'C:\Users\chris\Downloads\837ClaimsTraining_Randy_04222025_transcript_20250511_112523.txt', Model:tiny, Dev:cpu
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.GUI] Whisper worker thread started.
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.Worker] Worker run started.
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.Worker] Extracting audio from 'C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4' for transcription.
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.Worker] FFMPEG: ffmpeg -i C:/Users/chris/Videos/837ClaimsTraining_Randy_04222025.mp4 -y -vn -acodec pcm_s16le -ar 16000 -ac 1 C:\Users\chris\AppData\Local\Temp\wc_temp_9_qn33iq\temp_audio.wav
+[2025-05-11 11:25:23] [CRITICAL] [WhisperCreepApp.Worker] Unhandled worker exception
+Traceback (most recent call last):
+  File "C:\Users\chris\Desktop\scripts\TheMudRoom\WhisperCreep\WhisperCreepUI.py", line 140, in run
+    res = subprocess.run(cmd,cpt=True,txt=True,err='r',crfl=subprocess.CREATE_NO_WINDOW if os.name=='nt' else 0) # Abbreviated for brevity
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Popen.__init__() got an unexpected keyword argument 'cpt'
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.Worker] Worker 'finally'. Time:0.01s. OpOK:False. Running:True
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.Worker] Cleanup. Temp dir:'C:\Users\chris\AppData\Local\Temp\wc_temp_9_qn33iq'
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.Worker] Cleaned temp:'C:\Users\chris\AppData\Local\Temp\wc_temp_9_qn33iq'
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.Worker] Cleanup finished.
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.Worker] Worker run method fully completed.
+[2025-05-11 11:25:23] [ERROR] [WhisperCreepApp.GUI] Error signal from worker: General worker err:Popen.__init__() got an unexpected keyword argument 'cpt'
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.GUI] ProcessingIndicatorDialog stop_animation_and_close called.
+[2025-05-11 11:25:23] [DEBUG] [WhisperCreepApp.GUI] ProcessingIndicatorDialog closeEvent. Timer stopped. Dialog Hidden/Closed.
+[2025-05-11 11:25:23] [DEBUG] [WhisperCreepApp.GUI] QThread 'finished' signal received by GUI. Current run_btn text: 'Processing...'
+[2025-05-11 11:25:23] [WARNING] [WhisperCreepApp.GUI] Thread finished, but GUI finalize may not have run. Forcing GUI state reset.
+[2025-05-11 11:25:23] [INFO] [WhisperCreepApp.GUI] Finalizing GUI elements. Success: False, Path/Msg: Process thread ended; outcome uncertain if not already reported.
+[2025-05-11 11:25:23] [DEBUG] [WhisperCreepApp.GUI] Updating GUI for processing state: False
