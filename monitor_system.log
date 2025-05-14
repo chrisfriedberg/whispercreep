@@ -17,3 +17,33 @@
 [2025-05-12 00:08:18] TRANSCRIPTION PROCESS STARTING for XYPlorer.mp4
 [2025-05-12 00:08:19] VIDEO MOVED to output folder: C:/Users/chris/Videos/SnagIt_Transposed\XYPlorer.mp4
 [2025-05-12 00:08:19] DONE: XYPlorer.mp4 | Export: XYPlorer_transcript.txt | Time: 3.34s | Src: C:/Users/chris/Videos/Snagit\XYPlorer.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\XYPlorer_transcript.txt
+[2025-05-12 12:24:26] MONITORING ACTIVATED - Will check every 90 seconds
+[2025-05-12 12:24:26] MONITORING STARTED | Folder: C:/Users/chris/Videos/Snagit | Output: C:/Users/chris/Videos/SnagIt_Transposed | Interval: 90s
+[2025-05-12 12:24:26] START: 2025-05-12_11-46-04.mp4 | Src: C:/Users/chris/Videos/Snagit\2025-05-12_11-46-04.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\2025-05-12_11-46-04_transcript.txt
+[2025-05-12 12:24:28] TRANSCRIPTION PROCESS STARTING for 2025-05-12_11-46-04.mp4
+[2025-05-12 12:24:30] VIDEO MOVED to output folder: C:/Users/chris/Videos/SnagIt_Transposed\2025-05-12_11-46-04.mp4
+[2025-05-12 12:24:30] DONE: 2025-05-12_11-46-04.mp4 | Export: 2025-05-12_11-46-04_transcript.txt | Time: 4.09s | Src: C:/Users/chris/Videos/Snagit\2025-05-12_11-46-04.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\2025-05-12_11-46-04_transcript.txt
+[2025-05-12 12:26:00] START: 2025-05-12_12-19-46.mp4 | Src: C:/Users/chris/Videos/Snagit\2025-05-12_12-19-46.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\2025-05-12_12-19-46_transcript.txt
+[2025-05-12 12:26:02] TRANSCRIPTION PROCESS STARTING for 2025-05-12_12-19-46.mp4
+[2025-05-12 12:26:07] VIDEO MOVED to output folder: C:/Users/chris/Videos/SnagIt_Transposed\2025-05-12_12-19-46.mp4
+[2025-05-12 12:26:07] DONE: 2025-05-12_12-19-46.mp4 | Export: 2025-05-12_12-19-46_transcript.txt | Time: 6.91s | Src: C:/Users/chris/Videos/Snagit\2025-05-12_12-19-46.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\2025-05-12_12-19-46_transcript.txt
+[2025-05-12 12:27:37] START: JimmyFallon.mp4 | Src: C:/Users/chris/Videos/Snagit\JimmyFallon.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\JimmyFallon_transcript.txt
+[2025-05-12 12:27:42] Waiting for input file access: JimmyFallon.mp4
+[2025-05-12 12:27:49] Waiting for input file access: JimmyFallon.mp4
+[2025-05-12 12:27:56] Waiting for input file access: JimmyFallon.mp4
+[2025-05-12 12:27:58] SKIPPED: JimmyFallon.mp4 due to transcription failures
+[2025-05-12 12:29:28] START: JimmyFallon.mp4 | Src: C:/Users/chris/Videos/Snagit\JimmyFallon.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\JimmyFallon_transcript.txt
+[2025-05-12 12:29:33] Waiting for input file access: JimmyFallon.mp4
+[2025-05-12 12:29:40] Waiting for input file access: JimmyFallon.mp4
+[2025-05-12 12:29:47] Waiting for input file access: JimmyFallon.mp4
+[2025-05-12 12:29:49] SKIPPED: JimmyFallon.mp4 due to transcription failures
+[2025-05-12 12:31:19] START: JimmyFallon.mp4 | Src: C:/Users/chris/Videos/Snagit\JimmyFallon.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\JimmyFallon_transcript.txt
+[2025-05-12 12:31:24] Waiting for input file access: JimmyFallon.mp4
+[2025-05-12 12:31:31] Waiting for input file access: JimmyFallon.mp4
+[2025-05-12 12:31:38] Waiting for input file access: JimmyFallon.mp4
+[2025-05-12 12:31:40] SKIPPED: JimmyFallon.mp4 due to transcription failures
+[2025-05-12 12:33:10] START: JimmyFallon.mp4 | Src: C:/Users/chris/Videos/Snagit\JimmyFallon.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\JimmyFallon_transcript.txt
+[2025-05-12 12:33:12] TRANSCRIPTION PROCESS STARTING for JimmyFallon.mp4
+[2025-05-12 12:33:16] VIDEO MOVED to output folder: C:/Users/chris/Videos/SnagIt_Transposed\JimmyFallon.mp4
+[2025-05-12 12:33:16] DONE: JimmyFallon.mp4 | Export: JimmyFallon_transcript.txt | Time: 6.19s | Src: C:/Users/chris/Videos/Snagit\JimmyFallon.mp4 | Dest: C:/Users/chris/Videos/SnagIt_Transposed\JimmyFallon_transcript.txt
+[2025-05-12 12:41:23] MONITORING STOPPED

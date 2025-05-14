@@ -80,5 +80,36 @@ This is an all in one video to text, audio to text or video to audio transcripti
 Built by **Chris Friedberg**
 Fork it, break it, improve it — but respect the paranoia level.
 
+
 ---
 
+WhisperCreep: Overview
+WhisperCreep is a Windows-focused application with two main components:
+WhisperCreepUI: A comprehensive audio and video transcription tool that:
+Transcribes video files to timestamped text using OpenAI's Whisper
+Extracts audio from videos in MP3 format
+Transcribes audio-only files
+Includes a folder monitoring system that watches for new video files and automatically transcribes them
+Offers a system tray integration with minimize, resume, and kill options
+Provides detailed logging for troubleshooting
+Video Frame Snatcher: A utility that:
+Extracts frames from videos at specified intervals (FPS)
+Allows review of extracted frames with thumbnail previews
+Provides navigation controls to browse through the extracted frames
+Shows estimated completion time based on file size
+Key Features
+GUI-Based Interface: Built with PySide6 (Qt for Python), no command-line required
+Multiple File Format Support: Handles various video formats (MP4, MOV, AVI, WMV, MKV) and audio formats (MP3, WAV, M4A)
+Robust File Handling: Includes checks for file locks, permissions, file stability, and network path accessibility
+Temporary File Processing: Uses temp files to ensure only successful transcriptions become final output
+Paranoid-Level Logging: Detailed logging to help diagnose issues
+System Tray Integration: Allows the app to run in the background while monitoring folders
+User-Friendly Features: Progress indicators, error handling, and confirmation dialogs
+Technical Implementation
+Uses OpenAI's Whisper for speech-to-text conversion
+Uses ffmpeg for audio extraction from video files
+Uses OpenCV (in Video Frame Snatcher) for frame extraction
+Uses threading to prevent UI freezing during processing
+Implements exponential backoff retry logic for network operations
+Provides detailed error handling and user feedback
+The application has been designed with reliability and paranoia in mind, ensuring that file operations are safe, network paths are validated, and that file locks are handled properly to avoid data corruption or incomplete processing.

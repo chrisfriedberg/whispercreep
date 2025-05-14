@@ -14,15 +14,18 @@ import win32api
 import win32file
 import win32con
 import socket
+import configparser # For configuration file
 from pathlib import Path
+# Import video_frame_snatcher module
+from video_frame_snatcher import VideoFrameSnatcher
 
 from PySide6.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
     QLabel, QFileDialog, QMessageBox, QComboBox, QGroupBox,
     QSpacerItem, QSizePolicy, QRadioButton, QButtonGroup, QMenuBar, QMenu,
-    QMainWindow, QDialog, QLineEdit, QSystemTrayIcon
+    QMainWindow, QDialog, QLineEdit, QSystemTrayIcon, QStatusBar, QToolTip
 )
-from PySide6.QtCore import Qt, QThread, Signal, QObject, QTimer
+from PySide6.QtCore import Qt, QThread, Signal, QObject, QTimer, QEvent
 from PySide6.QtGui import QIntValidator, QIcon, QAction
 
 # --- Global Variables & Constants ---
@@ -932,6 +935,16 @@ class WhisperWorker(QObject):
         else: logger_worker.debug("No temp dir to clean.")
         self.temp_dir=None; self.temp_audio_path=None; logger_worker.info("Cleanup finished.")
 
+# --- Subclass QMenu to force tooltips on hover ---
+class PsychoMenu(QMenu):
+    def event(self, event):
+        if event.type() == QEvent.ToolTip:
+            action = self.actionAt(event.pos())
+            if action and action.toolTip():  # Only show if tooltip is set on action
+                QToolTip.showText(event.globalPos(), action.toolTip(), self)
+                return True
+        return super().event(event)
+
 # --- Main GUI Class (Based on User's Original Structure) ---
 class WhisperCreepInterface(QMainWindow):
     def __init__(self):
@@ -949,12 +962,26 @@ class WhisperCreepInterface(QMainWindow):
         self.setWindowTitle("WhisperCreep Control Room")
         self.setMinimumWidth(800)
         self.setMinimumHeight(600)
+        
+        # Add a status bar
+        self.setStatusBar(QStatusBar())
+        
         menu_bar = self.menuBar()
         menu_bar.setStyleSheet("QMenuBar { background-color: #0d0000; color: white; } QMenuBar::item:selected { background: #333333; } QMenu { background-color: #0d0000; color: white; } QMenu::item:selected { background-color: #333333; }")
         file_menu = menu_bar.addMenu("File")
+        
+        # Add Change App Icon option to File menu
+        change_icon_action = file_menu.addAction("Change App Icon")
+        change_icon_action.setToolTip("Choose a custom icon for the application")
+        change_icon_action.triggered.connect(self.change_app_icon)
+        
         exit_action = file_menu.addAction("Exit")
         exit_action.triggered.connect(self.close)
-        tools_menu = menu_bar.addMenu("Tools")
+        
+        # Use PsychoMenu for Tools menu to force tooltips
+        tools_menu = PsychoMenu("Tools", self)
+        menu_bar.addMenu(tools_menu)
+        
         help_menu = menu_bar.addMenu("Help")
         central_widget = QWidget()
         central_widget.setStyleSheet("background-color: black; color: white;")
@@ -1044,29 +1071,69 @@ class WhisperCreepInterface(QMainWindow):
 
         # New menu option
         monitor_action = tools_menu.addAction("Monitor Folder for Video")
+        monitor_action.setToolTip("Monitor a folder and auto transcribe video files.")
         monitor_action.triggered.connect(self.open_monitor_dialog)
+        
+        # Add Frame Snatcher to tools menu
+        frame_snatcher_action = tools_menu.addAction("Frame Snatcher")
+        frame_snatcher_action.setToolTip("Choose to create still frames from a video for analysis")
+        frame_snatcher_action.triggered.connect(self.open_frame_snatcher)
 
     def setup_tray_icon(self):
         self.tray_icon = QSystemTrayIcon(self)
-        # Try to load the custom icon
+        # Try to load the custom icon from config first
+        icon_loaded = False
         try:
             script_dir = os.path.dirname(os.path.abspath(__file__))
-            icon_path = os.path.join(script_dir, "WhisperCreepICO.ico")
-            logger_app.info(f"Attempting to load main window icon from: {icon_path}")
+            config_path = os.path.join(script_dir, "config.ini")
             
-            if os.path.exists(icon_path):
-                icon = QIcon(icon_path)
-                if not icon.isNull():
-                    self.tray_icon.setIcon(icon)
-                    logger_app.info(f"Successfully loaded main window icon from: {icon_path}")
-                else:
-                    raise Exception("Icon loaded but is null")
-            else:
-                raise FileNotFoundError(f"Icon file not found at: {icon_path}")
+            if os.path.exists(config_path):
+                config = configparser.ConfigParser()
+                config.read(config_path)
+                
+                if config.has_section('UI') and config.has_option('UI', 'icon_path'):
+                    icon_path = os.path.join(script_dir, config.get('UI', 'icon_path'))
+                    logger_app.info(f"Attempting to load custom icon from config: {icon_path}")
+                    
+                    if os.path.exists(icon_path):
+                        icon = QIcon(icon_path)
+                        if not icon.isNull():
+                            self.tray_icon.setIcon(icon)
+                            self.setWindowIcon(icon)
+                            app = QApplication.instance()
+                            app.setWindowIcon(icon)
+                            logger_app.info(f"Successfully loaded custom icon from: {icon_path}")
+                            icon_loaded = True
+                        else:
+                            raise Exception("Custom icon loaded but is null")
+                    else:
+                        logger_app.warning(f"Custom icon file not found at: {icon_path}")
         except Exception as e:
-            logger_app.error(f"Error loading main window icon: {e}")
-            self.tray_icon.setIcon(QIcon.fromTheme("system-run", QIcon.fromTheme("applications-system")))
-            logger_app.info("Using system default icon for main window")
+            logger_app.error(f"Error loading custom icon from config: {e}")
+        
+        # Fall back to default icon if custom wasn't loaded
+        if not icon_loaded:
+            try:
+                script_dir = os.path.dirname(os.path.abspath(__file__))
+                icon_path = os.path.join(script_dir, "WhisperCreepICO.ico")
+                logger_app.info(f"Attempting to load default icon from: {icon_path}")
+                
+                if os.path.exists(icon_path):
+                    icon = QIcon(icon_path)
+                    if not icon.isNull():
+                        self.tray_icon.setIcon(icon)
+                        self.setWindowIcon(icon)
+                        app = QApplication.instance()
+                        app.setWindowIcon(icon)
+                        logger_app.info(f"Successfully loaded default icon from: {icon_path}")
+                    else:
+                        raise Exception("Icon loaded but is null")
+                else:
+                    raise FileNotFoundError(f"Icon file not found at: {icon_path}")
+            except Exception as e:
+                logger_app.error(f"Error loading default icon: {e}")
+                self.tray_icon.setIcon(QIcon.fromTheme("system-run", QIcon.fromTheme("applications-system")))
+                logger_app.info("Using system default icon for main window")
         
         self.tray_icon.setToolTip("WhisperCreep Main Window")
         menu = QMenu()
@@ -1104,6 +1171,12 @@ class WhisperCreepInterface(QMainWindow):
             return
         dialog = MonitorFolderDialog(self)
         dialog.exec()
+        
+    def open_frame_snatcher(self):
+        """Opens the Frame Snatcher tool in a new window"""
+        logger_app.info("Opening Frame Snatcher tool")
+        self.frame_snatcher = VideoFrameSnatcher()
+        self.frame_snatcher.show()
 
     def start_processing(self):
         global transcription_in_progress
@@ -1394,6 +1467,85 @@ class WhisperCreepInterface(QMainWindow):
             if self.processing_dialog: self.processing_dialog.stop_animation_and_close(); self.processing_dialog = None
             self.close() 
         else: logger_app.info("User cancelled kill.")
+
+    def change_app_icon(self):
+        """
+        Allows user to select a custom icon for the application.
+        Copies the selected icon to the application directory and updates config.ini.
+        """
+        logger_app.info("Opening dialog to change app icon")
+        
+        # Get icon file from user
+        icon_path, _ = QFileDialog.getOpenFileName(
+            self, 
+            "Select Application Icon", 
+            os.path.expanduser("~"),
+            "Icon Files (*.ico *.png)"
+        )
+        
+        if not icon_path:
+            logger_app.info("Icon selection cancelled")
+            return
+            
+        try:
+            # Create app config directory if it doesn't exist
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            config_path = os.path.join(script_dir, "config.ini")
+            
+            # Copy the selected icon to our directory with a standard name
+            icon_filename = "custom_app_icon" + os.path.splitext(icon_path)[1]
+            destination_path = os.path.join(script_dir, icon_filename)
+            
+            # Copy the icon file
+            shutil.copy2(icon_path, destination_path)
+            logger_app.info(f"Copied icon from {icon_path} to {destination_path}")
+            
+            # Update config file
+            config = configparser.ConfigParser()
+            
+            # Load existing config if it exists
+            if os.path.exists(config_path):
+                config.read(config_path)
+                
+            # Ensure we have the UI section
+            if not config.has_section('UI'):
+                config.add_section('UI')
+                
+            # Set the icon path relative to the script directory
+            config.set('UI', 'icon_path', icon_filename)
+            
+            # Save the config
+            with open(config_path, 'w') as config_file:
+                config.write(config_file)
+                
+            logger_app.info(f"Updated config file at {config_path}")
+            
+            # Try to apply the icon immediately
+            icon = QIcon(destination_path)
+            if not icon.isNull():
+                self.setWindowIcon(icon)
+                app = QApplication.instance()
+                app.setWindowIcon(icon)
+                
+                # Update tray icon too
+                self.tray_icon.setIcon(icon)
+                
+                logger_app.info("Successfully applied new icon to application")
+                QMessageBox.information(
+                    self, 
+                    "Icon Changed", 
+                    "The application icon has been changed.\nThe new icon will be used the next time you start the application."
+                )
+            else:
+                raise Exception("Icon loaded but is null")
+                
+        except Exception as e:
+            logger_app.error(f"Error changing app icon: {e}", exc_info=True)
+            QMessageBox.critical(
+                self, 
+                "Icon Change Failed", 
+                f"Could not change the application icon.\nError: {str(e)}"
+            )
 
 # --- Main Application Execution ---
 if __name__ == "__main__":
