@@ -18,6 +18,8 @@ import configparser # For configuration file
 from pathlib import Path
 # Import video_frame_snatcher module
 from video_frame_snatcher import VideoFrameSnatcher
+# Import YouTube Caption Fetcher
+from youtube_captionfetcher import YouTubeCaptionFetcher
 
 from PySide6.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
@@ -1079,6 +1081,11 @@ class WhisperCreepInterface(QMainWindow):
         frame_snatcher_action.setToolTip("Choose to create still frames from a video for analysis")
         frame_snatcher_action.triggered.connect(self.open_frame_snatcher)
 
+        # Add YouTube Caption Fetcher to tools menu
+        youtube_caption_action = tools_menu.addAction("YouTube Caption Fetcher")
+        youtube_caption_action.setToolTip("Download and clean captions from YouTube videos")
+        youtube_caption_action.triggered.connect(self.open_youtube_caption_fetcher)
+
     def setup_tray_icon(self):
         self.tray_icon = QSystemTrayIcon(self)
         # Try to load the custom icon from config first
@@ -1177,6 +1184,12 @@ class WhisperCreepInterface(QMainWindow):
         logger_app.info("Opening Frame Snatcher tool")
         self.frame_snatcher = VideoFrameSnatcher()
         self.frame_snatcher.show()
+
+    def open_youtube_caption_fetcher(self):
+        """Opens the YouTube Caption Fetcher tool in a new window"""
+        logger_app.info("Opening YouTube Caption Fetcher tool")
+        self.youtube_caption_fetcher = YouTubeCaptionFetcher()
+        self.youtube_caption_fetcher.show()
 
     def start_processing(self):
         global transcription_in_progress
