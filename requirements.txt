@@ -1,7 +1,11 @@
-openai_whisper==20240930
-opencv_python==4.11.0.86
+openai-whisper==20240930
 PySide6==6.9.0
-PySide6_Addons==6.9.0
-PySide6_Essentials==6.9.0
+PySide6-Addons==6.9.0
+PySide6-Essentials==6.9.0
 pywin32==310
 torch==2.7.0
+torchaudio==2.7.0
+torchvision==0.22.0
+numpy>=2.2.5
+opencv-python==4.11.0.86
+ffmpeg-python>=0.2.0

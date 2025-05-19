@@ -661,9 +661,11 @@ class MonitorFolderDialog(QDialog):
         import shutil
         import tempfile
         model_name = "base"  # You can make this configurable if desired
-        if not torch.cuda.is_available():
-            raise RuntimeError("CUDA is not available. This application requires GPU acceleration to run. Please ensure you have a CUDA-capable GPU and the appropriate drivers installed.")
-        device = "cuda"
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        if device == "cpu":
+            logger_app.warning("CUDA not available, falling back to CPU. This will be slower.")
+        else:
+            logger_app.info("CUDA is available, using GPU acceleration.")
         while retry_count <= max_retries:
             try:
                 if MonitorFolderDialog._retry_pause_active:
@@ -854,10 +856,13 @@ class WhisperWorker(QObject):
     def __init__(self, mode, source_file, determined_dest_file_path, model_name="base", device=None):
         super().__init__()
         self.mode=mode; self.source_file=source_file; self.dest_file_path=determined_dest_file_path
-        if not torch.cuda.is_available():
-            raise RuntimeError("CUDA is not available. This application requires GPU acceleration to run. Please ensure you have a CUDA-capable GPU and the appropriate drivers installed.")
-        self.model_name=model_name; self.device="cuda"
-        self.model=None; self._is_running=True; self.temp_dir=None; self.temp_audio_path=None
+        self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
+        if self.device == "cpu":
+            logger_worker.warning("CUDA not available, falling back to CPU. This will be slower.")
+        else:
+            logger_worker.info("CUDA is available, using GPU acceleration.")
+        self.model_name=model_name
+        self._is_running=True; self.temp_dir=None; self.temp_audio_path=None
         logger_worker.info(f"Worker init. Mode:{self.mode}, Src:'{self.source_file}', Dest:'{self.dest_file_path}', Model:{self.model_name}, Dev:{self.device}")
     def run(self):
         op_ok=False; out_path_sig=""; start_time=time.time()
