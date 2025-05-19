@@ -661,7 +661,9 @@ class MonitorFolderDialog(QDialog):
         import shutil
         import tempfile
         model_name = "base"  # You can make this configurable if desired
-        device = "cuda" if torch.cuda.is_available() else "cpu"
+        if not torch.cuda.is_available():
+            raise RuntimeError("CUDA is not available. This application requires GPU acceleration to run. Please ensure you have a CUDA-capable GPU and the appropriate drivers installed.")
+        device = "cuda"
         while retry_count <= max_retries:
             try:
                 if MonitorFolderDialog._retry_pause_active:
@@ -852,7 +854,9 @@ class WhisperWorker(QObject):
     def __init__(self, mode, source_file, determined_dest_file_path, model_name="base", device=None):
         super().__init__()
         self.mode=mode; self.source_file=source_file; self.dest_file_path=determined_dest_file_path
-        self.model_name=model_name; self.device=device or ("cuda" if torch.cuda.is_available() else "cpu")
+        if not torch.cuda.is_available():
+            raise RuntimeError("CUDA is not available. This application requires GPU acceleration to run. Please ensure you have a CUDA-capable GPU and the appropriate drivers installed.")
+        self.model_name=model_name; self.device="cuda"
         self.model=None; self._is_running=True; self.temp_dir=None; self.temp_audio_path=None
         logger_worker.info(f"Worker init. Mode:{self.mode}, Src:'{self.source_file}', Dest:'{self.dest_file_path}', Model:{self.model_name}, Dev:{self.device}")
     def run(self):
