@@ -205,12 +205,48 @@ class MonitorFolderDialog(QDialog):
         self.setWindowTitle("Monitor Folder for Video")
         self.setModal(False)
         self.setWindowFlags(Qt.Dialog | Qt.CustomizeWindowHint | Qt.WindowTitleHint | Qt.WindowMinimizeButtonHint)
+        
+        # Apply dark theme styling
+        self.setStyleSheet("""
+            QDialog {
+                background-color: black;
+                color: white;
+            }
+            QLabel {
+                color: white;
+                font-family: Calibri;
+                font-size: 11pt;
+            }
+            QPushButton {
+                background-color: #333333;
+                color: white;
+                padding: 5px;
+                border-radius: 3px;
+                min-width: 80px;
+            }
+            QPushButton:hover {
+                background-color: #444444;
+            }
+            QPushButton:disabled {
+                background-color: #222222;
+                color: #888888;
+            }
+            QLineEdit {
+                background-color: #222222;
+                color: white;
+                border: 1px solid #444444;
+                padding: 3px;
+                border-radius: 2px;
+            }
+        """)
+        
         layout = QVBoxLayout(self)
 
         # Folder selection
         self.folder_label = QLabel("Select folder to monitor:")
         self.folder_path_label = QLabel("No folder selected.")
         self.folder_button = QPushButton("Browse")
+        self.folder_button.setStyleSheet("background-color: royalblue;")
         self.folder_button.clicked.connect(self.select_folder)
         layout.addWidget(self.folder_label)
         layout.addWidget(self.folder_path_label)
@@ -220,6 +256,7 @@ class MonitorFolderDialog(QDialog):
         self.output_label = QLabel("Select output location:")
         self.output_path_label = QLabel("No location selected.")
         self.output_button = QPushButton("Browse")
+        self.output_button.setStyleSheet("background-color: royalblue;")
         self.output_button.clicked.connect(self.select_output)
         layout.addWidget(self.output_label)
         layout.addWidget(self.output_path_label)
@@ -235,25 +272,30 @@ class MonitorFolderDialog(QDialog):
         # Button layout for Apply, Save, and Close
         btn_layout = QHBoxLayout()
         self.apply_button = QPushButton("Apply Settings")
+        self.apply_button.setStyleSheet("background-color: #555555;")
         self.apply_button.clicked.connect(self.apply_settings)
         btn_layout.addWidget(self.apply_button)
         
         self.save_button = QPushButton("Save Settings")
+        self.save_button.setStyleSheet("background-color: green;")
         self.save_button.clicked.connect(self.save_settings)
         btn_layout.addWidget(self.save_button)
         
         self.close_button = QPushButton("Close")
+        self.close_button.setStyleSheet("background-color: crimson;")
         self.close_button.clicked.connect(self.close)
         btn_layout.addWidget(self.close_button)
         layout.addLayout(btn_layout)
 
         # Start/Stop monitoring
         self.start_button = QPushButton("Start Monitoring")
+        self.start_button.setStyleSheet("background-color: purple;")
         self.start_button.clicked.connect(self.start_monitoring)
         self.start_button.setEnabled(False)  # Disabled until settings are saved
         layout.addWidget(self.start_button)
 
         self.stop_button = QPushButton("Stop Monitoring")
+        self.stop_button.setStyleSheet("background-color: orange; color: black;")
         self.stop_button.clicked.connect(self.stop_monitoring)
         self.stop_button.setEnabled(False)
         layout.addWidget(self.stop_button)
