@@ -990,6 +990,10 @@ class WhisperWorker(QObject):
 
 # --- Subclass QMenu to force tooltips on hover ---
 class PsychoMenu(QMenu):
+    def __init__(self, title, parent=None):
+        super().__init__(title, parent)
+        self.setStyleSheet("background-color: #0d0000; color: white; border: none;")
+        
     def event(self, event):
         if event.type() == QEvent.ToolTip:
             action = self.actionAt(event.pos())
@@ -1016,8 +1020,24 @@ class WhisperCreepInterface(QMainWindow):
         self.setMinimumWidth(800)
         self.setMinimumHeight(600)
         
+        # Set window background to black
+        self.setStyleSheet("""
+            QMainWindow {
+                background-color: black;
+                color: white;
+                border: none;
+            }
+            QStatusBar {
+                background-color: black;
+                color: white;
+                border-top: none;
+            }
+        """)
+        
         # Add a status bar
-        self.setStatusBar(QStatusBar())
+        status_bar = QStatusBar()
+        status_bar.setStyleSheet("background-color: black; color: white; border-top: none;")
+        self.setStatusBar(status_bar)
         
         menu_bar = self.menuBar()
         menu_bar.setStyleSheet("QMenuBar { background-color: #0d0000; color: white; } QMenuBar::item:selected { background: #333333; } QMenu { background-color: #0d0000; color: white; } QMenu::item:selected { background-color: #333333; }")
@@ -1033,6 +1053,7 @@ class WhisperCreepInterface(QMainWindow):
         
         # Use PsychoMenu for Tools menu to force tooltips
         tools_menu = PsychoMenu("Tools", self)
+        tools_menu.setStyleSheet("QMenu { background-color: #0d0000; color: white; } QMenu::item:selected { background-color: #333333; }")
         menu_bar.addMenu(tools_menu)
         
         help_menu = menu_bar.addMenu("Help")
@@ -1136,6 +1157,11 @@ class WhisperCreepInterface(QMainWindow):
         youtube_caption_action = tools_menu.addAction("YouTube Caption Fetcher")
         youtube_caption_action.setToolTip("Download and clean captions from YouTube videos")
         youtube_caption_action.triggered.connect(self.open_youtube_caption_fetcher)
+
+        # Add Website to PDF to tools menu
+        webtopdf_action = tools_menu.addAction("WebPage to PDF")
+        webtopdf_action.setToolTip("Convert websites to PDF documents")
+        webtopdf_action.triggered.connect(lambda: os.system(f'python "{os.path.join(os.path.dirname(os.path.abspath(__file__)), "webtopdf_gui.py")}"'))
 
     def setup_tray_icon(self):
         self.tray_icon = QSystemTrayIcon(self)
@@ -1616,8 +1642,58 @@ if __name__ == "__main__":
     logger_app.info(f"--- Application Starting Up (Console Logging Only Initially). Version: {APP_VERSION}, PID: {os.getpid()} ---")
     if os.name == 'nt': bring_console_to_front() 
 
+    # Tell Qt to use the system's dark theme if available
     app = QApplication(sys.argv)
+    app.setAttribute(Qt.ApplicationAttribute.AA_UseStyleSheetPropagationInWidgetStyles, True)
+    
+    # Set up Windows dark title bar if possible
+    if os.name == 'nt':
+        try:
+            # Use ctypes to access Windows API
+            import ctypes
+            
+            # Try to enable dark mode for title bar
+            DWMWA_USE_IMMERSIVE_DARK_MODE = 20
+            hwnd = ctypes.windll.user32.GetActiveWindow()
+            
+            # Enable dark mode for the app
+            ctypes.windll.dwmapi.DwmSetWindowAttribute(
+                hwnd, 
+                DWMWA_USE_IMMERSIVE_DARK_MODE,
+                ctypes.byref(ctypes.c_int(1)),
+                ctypes.sizeof(ctypes.c_int)
+            )
+            logger_app.info("Windows dark mode for title bar enabled")
+        except Exception as e:
+            logger_app.warning(f"Could not enable Windows dark mode for title bar: {e}")
+    
     window = WhisperCreepInterface()
+    
+    # Apply dark mode to window after creation
+    if os.name == 'nt':
+        try:
+            # Apply dark mode to title bar and window frame
+            hwnd = window.winId()
+            ctypes.windll.dwmapi.DwmSetWindowAttribute(
+                int(hwnd), 
+                DWMWA_USE_IMMERSIVE_DARK_MODE,
+                ctypes.byref(ctypes.c_int(1)),
+                ctypes.sizeof(ctypes.c_int)
+            )
+            
+            # Additional Windows-specific style adjustments to ensure full dark mode
+            # Use GetSystemParametersInfo to get system colors to match system theme perfectly
+            window.setStyleSheet(window.styleSheet() + """
+                QMainWindow {
+                    border: none;
+                }
+            """)
+            
+            # Force a style update
+            window.setStyle(window.style())
+        except Exception as e:
+            logger_app.warning(f"Could not apply dark mode to window: {e}")
+    
     window.show()
     logger_app.info("App window shown. Entering main event loop.")
     sys.exit(app.exec())
