@@ -1032,6 +1032,15 @@ class WhisperCreepInterface(QMainWindow):
                 color: white;
                 border-top: none;
             }
+            /* Make QLabel and QRadioButton inside QGroupBox match QGroupBox background */
+            QGroupBox QLabel {
+                background-color: #1A1A1A; /* Match QGroupBox background */
+                color: white;
+            }
+            QGroupBox QRadioButton {
+                background-color: #1A1A1A; /* Match QGroupBox background */
+                color: white;
+            }
         """)
         
         # Add a status bar
@@ -1066,18 +1075,20 @@ class WhisperCreepInterface(QMainWindow):
         def create_option_row(description, help_button, radio_button):
             layout = QHBoxLayout()
             label = QLabel(description)
-            label.setStyleSheet("font-family:Calibri;font-size:11pt;")
+            # Ensure background matches QGroupBox and text is white
+            label.setStyleSheet("font-family:Calibri;font-size:11pt; background-color: #1A1A1A; color: white;")
             layout.addWidget(label)
             layout.addStretch()
-            radio_button.setStyleSheet("padding-left:8px;padding-right:8px;")
+            # Ensure background matches QGroupBox and text is white
+            radio_button.setStyleSheet("padding-left:8px;padding-right:8px; background-color: #1A1A1A; color: white;")
             layout.addWidget(radio_button)
             layout.addSpacing(20)
             layout.addWidget(help_button)
             return layout
         ops_data = [("video_transcript", "Extract Video Transcript", "Extract spoken content from video.", ".mp4..."),
-                    ("rip_audio", "Rip Audio from Video", "Extract audio track (MP3) from video.", ".mp4..."),
-                    ("audio_transcript", "Extract Audio Transcript", "Transcribe an audio-only file.", ".mp3...")]
-        gb_style = "QGroupBox{background-color:black;color:white;border:1px solid #222;padding:10px;margin-top:1ex;}QGroupBox::title{subcontrol-origin:margin;subcontrol-position:top left;padding:0 10px;font-weight:bold;}"
+                    ("rip_audio", "Rip Audio from Video", "Extract audio track (MP3) from video.", ".mp4..."), # NoQA: E501
+                    ("audio_transcript", "Extract Audio Transcript", "Transcribe an audio-only file.", ".mp3...")] # NoQA: E501
+        gb_style = "QGroupBox{background-color:#1A1A1A;color:white;border:1px solid #333333;padding:10px;margin-top:1ex;}QGroupBox::title{subcontrol-origin:margin;subcontrol-position:top left;padding:0 10px;font-weight:bold;}"
         for n, t, d, ft in ops_data:
             rb = QRadioButton()
             rb.setObjectName(n)
@@ -1099,6 +1110,8 @@ class WhisperCreepInterface(QMainWindow):
         self.src_btn.clicked.connect(self.browse_source_file)
         src_lo.addWidget(self.src_btn)
         self.src_file_lbl = QLabel("No file selected.")
+        # Apply consistent styling to match other labels in group boxes
+        self.src_file_lbl.setStyleSheet("font-family:Calibri; font-size:11pt; background-color: #1A1A1A; color: white;")
         src_lo.addWidget(self.src_file_lbl)
         src_lo.addStretch()
         src_gb.setLayout(src_lo)
@@ -1107,6 +1120,8 @@ class WhisperCreepInterface(QMainWindow):
         dst_gb.setStyleSheet(gb_style)
         dst_lo = QHBoxLayout()
         self.dst_info_lbl = QLabel("Output will be saved to your Downloads folder.")
+        # Apply consistent styling
+        self.dst_info_lbl.setStyleSheet("font-family:Calibri; font-size:11pt; background-color: #1A1A1A; color: white;")
         dst_lo.addWidget(self.dst_info_lbl)
         dst_gb.setLayout(dst_lo)
         main_layout.addWidget(dst_gb)
@@ -1116,7 +1131,10 @@ class WhisperCreepInterface(QMainWindow):
         self.mdl_combo = QComboBox()
         self.mdl_combo.addItems(["tiny", "base", "small", "medium", "large"])
         self.mdl_combo.setCurrentText("base")
-        mdl_lo.addWidget(QLabel("Model Size:"))
+        model_size_label = QLabel("Model Size:")
+        # Apply consistent styling
+        model_size_label.setStyleSheet("font-family:Calibri; font-size:11pt; background-color: #1A1A1A; color: white;")
+        mdl_lo.addWidget(model_size_label)
         mdl_lo.addWidget(self.mdl_combo)
         mdl_gb.setLayout(mdl_lo)
         main_layout.addWidget(mdl_gb)
@@ -1697,4 +1715,3 @@ if __name__ == "__main__":
     window.show()
     logger_app.info("App window shown. Entering main event loop.")
     sys.exit(app.exec())
-
